@@ -30,12 +30,14 @@ jobs:
         cache: 'yarn'
 
     - name: Install frontend dependencies
-      working-directory: ./ui-ngx
-      run: yarn install
+      run: |
+        cd ui-ngx
+        yarn install
 
     - name: Build frontend
-      working-directory: ./ui-ngx
-      run: yarn build
+      run: |
+        cd ui-ngx
+        yarn build
 
     - name: Build backend
       run: mvn clean install -DskipTests
