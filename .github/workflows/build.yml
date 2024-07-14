@@ -30,13 +30,13 @@ jobs:
         cache: 'npm'
 
     - name: Install frontend dependencies
-      working-directory: ./ui-ngx
       run: |
-        npm ci  # ใช้ npm ci แทน npm install เพื่อใช้ไฟล์ package-lock.json
+        cd ui-ngx
+        npm ci
 
     - name: Build frontend
-      working-directory: ./ui-ngx
       run: |
+        cd ui-ngx
         npm run build
 
     - name: Build backend
