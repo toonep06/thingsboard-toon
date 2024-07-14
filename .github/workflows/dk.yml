@@ -1,12 +1,8 @@
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -18,11 +14,16 @@ jobs:
 
       - name: Download and extract release artifact
         run: |
-          mkdir -p releases
-          wget https://github.com/toonep06/thingsboard-toon/archive/refs/tags/v1.tar.gz -O releases/v1.tar.gz
+          mkdir releases
+          curl -L https://github.com/toonep06/thingsboard-toon/archive/refs/tags/v1.tar.gz --output releases/v1.tar.gz
           tar -xzf releases/v1.tar.gz -C releases
           mv releases/thingsboard-toon-1/* releases/
           rm -rf releases/thingsboard-toon-1
+
+      - name: Verify JAR file
+        run: |
+          dir releases
+          if not exist releases\thingsboard.jar (echo "thingsboard.jar not found" && exit 1)
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -35,6 +36,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd ${{ github.workspace }}
           docker build -t your-dockerhub-username/thingsboard:v1 .
           docker push your-dockerhub-username/thingsboard:v1
