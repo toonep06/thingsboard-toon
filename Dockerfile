@@ -9,7 +9,7 @@ ENV PATH $JAVA_HOME/bin:$PATH
 WORKDIR /app
 
 # คัดลอกไฟล์ที่ดาวน์โหลดมาที่ container
-COPY releases/thingsboard-toon-1/thingsboard.jar /app/thingsboard.jar
+COPY releases/thingsboard.jar /app/thingsboard.jar
 
 # กำหนด command เพื่อรันแอปพลิเคชัน
 ENTRYPOINT ["java", "-jar", "/app/thingsboard.jar"]
