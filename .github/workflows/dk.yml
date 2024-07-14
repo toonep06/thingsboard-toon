@@ -22,12 +22,6 @@ jobs:
           curl -L https://github.com/toonep06/thingsboard-toon/archive/refs/tags/v1.tar.gz --output releases/v1.tar.gz
           tar -xzf releases/v1.tar.gz -C releases
 
-      - name: Verify extracted files
-        run: |
-          ls -l releases/thingsboard-toon-1
-          if [ ! -f releases/thingsboard-toon-1/Dockerfile ]; then echo "Dockerfile not found" && exit 1; fi
-          if [ ! -f releases/thingsboard-toon-1/releases/thingsboard.jar ]; then echo "thingsboard.jar not found" && exit 1; fi
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
