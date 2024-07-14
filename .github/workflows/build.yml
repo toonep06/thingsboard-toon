@@ -27,15 +27,15 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
-        cache: 'npm'
+        cache: 'yarn'
 
     - name: Install frontend dependencies
       working-directory: ./ui-ngx
-      run: npm install
+      run: yarn install
 
     - name: Build frontend
       working-directory: ./ui-ngx
-      run: npm run build
+      run: yarn build
 
     - name: Build backend
       run: mvn clean install -DskipTests
