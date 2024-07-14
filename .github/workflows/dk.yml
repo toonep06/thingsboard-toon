@@ -33,5 +33,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t your-dockerhub-username/thingsboard:v1 -f releases/thingsboard-toon-1/Dockerfile releases/thingsboard-toon-1
+          docker build -t your-dockerhub-username/thingsboard:v1 -f /thingsboard-toon-1/Dockerfile /thingsboard-toon-1
           docker push your-dockerhub-username/thingsboard:v1
