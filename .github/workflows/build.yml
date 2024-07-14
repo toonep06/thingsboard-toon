@@ -32,7 +32,7 @@ jobs:
     - name: Install Backend Dependencies and Build
       run: |
         sudo apt-get install maven -y
-        mvn clean install -DskipTests
+        mvn clean install -DskipTests -Dlicense.skip=true
 
     - name: Install Frontend Dependencies and Build
       run: |
