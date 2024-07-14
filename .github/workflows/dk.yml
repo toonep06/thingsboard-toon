@@ -23,8 +23,6 @@ jobs:
           tar -xzf releases/v1.tar.gz -C releases
           mv releases/thingsboard-toon-1/* releases/
           rm -rf releases/thingsboard-toon-1
-      - name: Copy JAR file to root
-        run: move releases\thingsboard.jar .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
