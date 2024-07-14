@@ -32,7 +32,7 @@ jobs:
     - name: Install frontend dependencies
       run: |
         cd ui-ngx
-        npm install
+        npm ci  # ใช้ npm ci แทน npm install เพื่อใช้ไฟล์ package-lock.json
 
     - name: Build frontend
       run: |
@@ -50,19 +50,3 @@ jobs:
         path: |
           application/target/*.jar
           ui-ngx/dist/*
-
-    - name: Configure Git
-      run: |
-        git config --global user.email "your-email@example.com"
-        git config --global user.name "your-username"
-
-    - name: Commit changes
-      run: |
-        git add ui-ngx/package-lock.json
-        git commit -m "Add package-lock.json"
-
-    - name: Push changes
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: |
-        git push https://${GH_PAT}@github.com/your-username/thingsboard-toon.git HEAD:master
